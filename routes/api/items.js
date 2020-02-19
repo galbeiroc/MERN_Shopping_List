@@ -10,7 +10,7 @@ const Item = require('../../models/Items');
 router.get('/', (req, res) => {
   Item.find()
     .sort({ date: -1 })
-    .then(items => res.json());
+    .then(items => res.json(items));
 });
 
 //@route POST api/items
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 //@desc DELETE all items
 //@acces public
 router.delete('/:id', (req, res) => {
-  Item.findById(req.param.id)
+  Item.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
