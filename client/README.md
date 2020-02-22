@@ -67,9 +67,20 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+Add
+onClick={() => {
+    const name = prompt('Enter item');
+        if (name) {
+            this.setState(state => ({
+            items: [...state.items, { id: uuid(), name }]
+        }));
+    }
+}}
+  
+Delete
 onClick={() => {
     this.setState(state => ({
-    items: state.items.filter(item => item.id !== id)
+        items: state.items.filter(item => item.id !== id)
     }));
 }}
 
