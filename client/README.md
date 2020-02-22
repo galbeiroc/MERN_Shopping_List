@@ -66,3 +66,22 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+onClick={() => {
+    this.setState(state => ({
+    items: state.items.filter(item => item.id !== id)
+    }));
+}}
+
+### Redux
+
+### `npm i redux react-redux redux-thunk`
+
+react-thunk is a middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
+
+    getState()
+    dispatch(action)
+    subscribe(listener)
+    replaceReducer(nextReducer)
+
+Store is only an object with a few methods on it.
