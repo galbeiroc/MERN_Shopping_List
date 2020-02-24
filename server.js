@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const config = require('config')
 
 const items = require('./routes/items');
 const users = require('./routes/users');
@@ -12,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //Db Config
-const db = require('./config/keys').mongoUri;
+const db = config.get('mongoUri');
 
 //Connect to Mongo
 mongoose

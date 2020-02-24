@@ -4,10 +4,8 @@ const {
   createNewItem,
   deleteItem
 } = require('../controllers/items');
+const auth = require('../middleware/auth');
 const router = express.Router();
-
-//Item Model
-const Item = require('../models/Items');
 
 //@route GET api/items
 //@desc GET all items
@@ -16,12 +14,12 @@ router.get('/', getAllItems);
 
 //@route POST api/items
 //@desc POST all items
-//@acces public
-router.post('/', createNewItem);
+//@acces private
+router.post('/', auth, createNewItem);
 
 //@route DELETE api/items/:id
 //@desc DELETE all items
-//@acces public
-router.delete('/:id', deleteItem);
+//@acces private
+router.delete('/:id', auth, deleteItem);
 
 module.exports = router;
