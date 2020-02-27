@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 module.exports = {
   createNewUser: (req, res) => {
     const { name, email, password } = req.body;
+    console.log('req.body-', req.body);
 
     //validations
     if (!name || !email || !password) {

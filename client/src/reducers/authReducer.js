@@ -17,7 +17,7 @@ const initalState = {
 };
 
 export default function(state = initalState, action) {
-  switch (action.payload) {
+  switch (action.type) {
     case USER_LOADING:
       return {
         ...state,
