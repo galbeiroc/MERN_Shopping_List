@@ -9,6 +9,7 @@ import {
   NavItem
 } from 'reactstrap';
 import RegisterModal from '../components/auth/RegisterModal';
+import LoginModal from '../components/auth/LoginModal';
 import Logout from '../components/auth/Logout';
 
 class AppNavbar extends Component {
@@ -32,6 +33,9 @@ class AppNavbar extends Component {
             <Nav className="ml-auto">
               <NavItem>
                 <RegisterModal />
+              </NavItem>
+              <NavItem>
+                <LoginModal />
               </NavItem>
               <NavItem>
                 <Logout />
