@@ -18,7 +18,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('/api/users/auth', tokenConfig(getState))
+    .get('api/users/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -47,7 +47,7 @@ export const register = ({ name, email, password }) => dispatch => {
   console.log('Body', body);
 
   axios
-    .post('/api/users', body, config)
+    .post('api/users/register', body, config)
     .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch(err => {
       dispatch(
@@ -64,7 +64,7 @@ export const login = ({ email, password }) => dispatch => {
   //Header
   const config = {
     header: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   };
 
@@ -73,7 +73,7 @@ export const login = ({ email, password }) => dispatch => {
   console.log('Body', body);
 
   axios
-    .post('/api/users/auth', body, config)
+    .post('api/users/login', body, config)
     .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
     .catch(err => {
       dispatch(
@@ -103,7 +103,7 @@ export const tokenConfig = getState => {
   //Headers
   const config = {
     header: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   };
 

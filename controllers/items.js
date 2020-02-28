@@ -10,6 +10,8 @@ module.exports = {
 
   createNewItem: (req, res) => {
     const { name } = req.body;
+    console.log('name', req.body);
+    
 
     const newItem = new Item({ name });
 
@@ -18,6 +20,8 @@ module.exports = {
 
   deleteItem: (req, res) => {
     const { id } = req.params;
+    console.log('id item', id);
+    
     Item.findById(id)
       .then(item => item.remove().then(() => res.json({ success: true })))
       .catch(err => res.status(404).json({ success: false }));

@@ -7,11 +7,19 @@ import { connect } from 'react-redux';
 import { getItems, delteItem } from '../actions/itemActions';
 
 class ShoppingList extends Component {
+  static propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+  };
+
   componentDidMount() {
     this.props.getItems();
   }
 
   onDeleteClick = id => {
+    console.log(('id', id));
+    
     this.props.delteItem(id);
   };
 
@@ -24,14 +32,17 @@ class ShoppingList extends Component {
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    size="sm"
-                    onClick={this.onDeleteClick.bind(this, _id)}
-                  >
-                    &times;
-                  </Button>
+                  {/* {this.props.isAuthenticated ? ( */}
+                    <Button
+                      className="remove-btn"
+                      color="danger"
+                      size="sm"
+                      onClick={this.onDeleteClick.bind(this, _id)}
+                    >
+                      &times;
+                    </Button>
+                  {/* ) : null} */}
+
                   {name}
                 </ListGroupItem>
               </CSSTransition>
@@ -42,10 +53,6 @@ class ShoppingList extends Component {
     );
   }
 }
-ShoppingList.propTypes = {
-  getItems: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
-};
 
 const mapStateToProps = state => ({
   item: state.item
