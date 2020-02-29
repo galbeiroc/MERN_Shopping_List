@@ -93,7 +93,7 @@ module.exports = {
     });
   },
 
-  getDataUser: (req, res) => {
+  getDataUser: (req, res) => {   
     User.findById(req.user.id)
       .select('-password')
       .then(user => res.json(user));

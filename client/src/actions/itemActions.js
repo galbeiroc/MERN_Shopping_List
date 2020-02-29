@@ -19,22 +19,6 @@ export const getItems = () => dispatch => {
     );
 };
 
-export const delteItem = id => (dispatch, getState) => {
-  console.log('tokenConfig(getState)', tokenConfig(getState));
-  
-  axios
-    .delete(`api/items/${id}`, tokenConfig(getState))
-    .then(res =>
-      dispatch({
-        type: DELETE_ITEM,
-        payload: id
-      })
-    )
-    .catch(err =>
-      dispatch(returnErrors(err.response.data, err.response.status))
-    );
-};
-
 export const addItem = item => (dispatch, getState) => {
   axios
     .post('api/items', item, tokenConfig(getState))
@@ -49,8 +33,24 @@ export const addItem = item => (dispatch, getState) => {
     );
 };
 
+export const delteItem = id => (dispatch, getState) => {
+ 
+  axios
+    .delete(`api/items/${id}`, tokenConfig(getState))
+    .then(res =>
+      dispatch({
+        type: DELETE_ITEM,
+        payload: id
+      })
+    )
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
 export const setItemLoading = () => {
   return {
     type: ITEMS_LOADING
   };
 };
+

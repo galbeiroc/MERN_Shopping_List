@@ -30,7 +30,6 @@ class ItemModal extends Component {
   };
 
   onChange = ({ target: { name, value } }) => {
-    console.log('value', value);
     this.setState({
       [name]: value
     });
@@ -42,7 +41,6 @@ class ItemModal extends Component {
     const newItem = {
       name: this.state.name
     };
-    console.log('onSubmit');
 
     this.props.addItem(newItem);
 
@@ -53,7 +51,7 @@ class ItemModal extends Component {
   render() {
     return (
       <div>
-        {/* {this.props.isAuthenticated ? ( */}
+        {this.props.isAuthenticated ? (
           <Button
             color={'dark'}
             style={{ marginBottom: '2rem' }}
@@ -61,9 +59,9 @@ class ItemModal extends Component {
           >
             Add Item
           </Button>
-        {/* ) : (
+        ) : (
           <h4 className="mb-3">Please log in to manage Items</h4>
-        )} */}
+        )} 
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader>Add Shopping List</ModalHeader>
@@ -90,7 +88,8 @@ class ItemModal extends Component {
 }
 
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { addItem })(ItemModal);

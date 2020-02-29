@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
   const token = req.header('x-auth-token');
-
+  //console.log(JSON.stringify(req.headers));
+  
   //check for token
   if (!token)
     return res.status(401).json({ msg: 'No token, authorization denied' });
@@ -14,6 +15,7 @@ function auth(req, res, next) {
 
     //add user payload
     req.user = decoded;
+
     next();
   } catch (e) {
     res.status(400).json({ msg: 'Token is not valid' });

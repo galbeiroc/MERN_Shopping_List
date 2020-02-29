@@ -11,6 +11,7 @@ const app = express();
 
 //BodyParser Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 //Db Config
 const db = config.get('mongoUri');

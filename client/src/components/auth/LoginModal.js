@@ -63,7 +63,6 @@ class LoginModal extends Component {
   };
 
   onChange = ({ target: { name, value } }) => {
-    console.log('value', value);
     this.setState({
       [name]: value
     });

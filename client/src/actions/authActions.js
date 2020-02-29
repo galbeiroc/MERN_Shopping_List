@@ -98,18 +98,17 @@ export const logout = () => {
 export const tokenConfig = getState => {
   //Get token from localstore
   const token = getState().auth.token;
-  console.log('Token', token);
 
   //Headers
   const config = {
-    header: {
+    headers: {
       'Content-Type': 'application/json'
     }
   };
 
   //If token, add to headers
   if (token) {
-    config.header['x-auth-token'] = token;
+    config.headers['x-auth-token'] = token;
   }
 
   return config;
